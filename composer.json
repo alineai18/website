@@ -1,0 +1,73 @@
+{
+    "name": "aplus/app",
+    "type": "project",
+    "description": "Aplus Framework App Project",
+    "keywords": [
+        "app",
+        "application",
+        "libraries",
+        "mvc",
+        "database",
+        "routing",
+        "http",
+        "config",
+        "session",
+        "skeleton",
+        "project"
+    ],
+    "homepage": "https://aplus-framework.com/docs/app",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "ext-sodium": "*",
+        "aplus/framework": "dev-master"
+    },
+    "require-dev": {
+        "ext-xdebug": "*",
+        "aplus/coding-standard": "^1.10",
+        "aplus/testing": "dev-master",
+        "ergebnis/composer-normalize": "^2.15",
+        "jetbrains/phpstorm-attributes": "^1.0",
+        "natanfelles/php-server": "^2.11",
+        "phpmd/phpmd": "^2.10",
+        "phpstan/phpstan": "^0.12"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "App.php"
+        ],
+        "files": [
+            "extra/init.php",
+            "extra/constants.php",
+            "extra/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php bin/setup"
+        ],
+        "aplus": "@php bin/console",
+        "cs-diff": "php-cs-fixer fix --diff --dry-run -vvv",
+        "cs-fix": "php-cs-fixer fix -vvv",
+        "md": "phpmd app xml phpmd.xml",
+        "md-app": "phpmd App.php xml phpmd.xml",
+        "server": "php-server",
+        "stan": "phpstan analyse -vvv",
+        "unit": "phpunit"
+    }
+}

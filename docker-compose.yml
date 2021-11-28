@@ -1,0 +1,12 @@
+version: "3.0"
+services:
+  lempa:
+    image: registry.gitlab.com/aplus-framework/images/lempa
+    container_name: lempa-app
+    working_dir: /var/www/aplus
+    volumes:
+      - .:/var/www/aplus
+    network_mode: host
+    environment:
+      - APLUS_PRELOAD=false
+    tty: true
